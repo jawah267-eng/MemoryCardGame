@@ -1,0 +1,111 @@
+*{
+    padding: 0;
+    margin: 0;  
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Poppins', sans-serif;
+    background-color: #2e47c5;
+    height: 100vh;
+}
+.memory-game{
+    width: min(640px, 100%);
+    margin: auto;
+    padding: 20px;
+    perspective: 1000px;
+}
+.memory-card{
+    position: relative;
+    aspect-ratio: 1;
+    perspective: 1000px;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+}
+
+.output{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.front-face,
+.back-face{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    backface-visibility: hidden;
+    transition: transform 0.5s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.front-face{
+    background: #1c7ccc;
+}
+
+.back-face{
+    background: #ffffff;
+    color: #1c7ccc;
+    font-size: 42px;
+    font-weight: bold;
+    transform: rotateY(180deg);
+}
+
+.memory-card.flipped .front-face{
+    transform: rotateY(180deg);
+}
+
+.memory-card.flipped .back-face{
+    transform: rotateY(360deg);
+}
+
+.memory-card:active{
+    transform: scale(0.97);
+}
+
+@media (max-width: 680px){
+    .memory-game{
+        padding: 10px;
+    }
+
+    .output{
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .back-face{
+        font-size: 32px;
+    }
+}
+
+.output .memory-card{
+    min-height: 0;
+}
+
+
+.back-face{
+    user-select: none;
+}
+
+.output span{
+    display: none;
+}
+
+.output span:hover{
+    background-color: transparent;
+    transform: none;
+}
+
+@media (max-width: 400px){
+    .output{
+        gap: 6px;
+    }
+
+    .back-face{
+        font-size: 26px;
+    }
+}
