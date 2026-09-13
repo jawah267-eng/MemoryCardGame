@@ -8,112 +8,86 @@
     <link rel="stylesheet" href="./css/styleLevel2.css" />
   </head>
   <body>
-    <h1>Memory Card Game</h1>
-    <section class="memory-game">
-      <div id="output" class="output"></div>
-    </section>
-    <section class="memory-game">
-      <div class="card">
-        <img src="./images/ancient-samurai.png" alt="1" />
-        <img src="./images/back-image.png" alt="0" />
-      </div>
-      <div class="card">
-        <img src="./images/ancient-samurai.png" alt="11" />
-        <img src="./images/back-image.png" alt="0" />
-      </div>
-      <div class="card">
-        <img src="./images/cursed-katana.png" alt="2" />
-        <img src="./images/back-image.png" alt="0" />
-      </div>
-      <div class="card">
-        <img src="./images/cursed-katana.png" alt="22" />
-        <img src="./images/back-image.png" alt="0" />
-      </div>
-      <div class="card">
-        <img src="./images/demon-samurai.png" alt="3" />
-        <img src="./images/back-image.png" alt="0" />
-      </div>
-      <div class="card">
-        <img src="./images/demon-samurai.png" alt="33" />
-        <img src="./images/back-image.png" alt="0" />
-      </div>
-      <div class="card">
-        <img src="./images/dragon-samurai.png" alt="4" />
-        <img src="./images/back-image.png" alt="0" />
-      </div>
-      <div class="card">
-        <img src="./images/dragon-samurai.png" alt="44" />
-        <img src="./images/back-image.png" alt="0" />
-      </div>
-      <div class="card">
-        <img src="./images/ghost-samurai.png" alt="5" />
-        <img src="./images/back-image.png" alt="0" />
-      </div>
-      <div class="card">
-        <img src="./images/ghost-samurai.png" alt="55" />
-        <img src="./images/back-image.png" alt="0" />
-      </div>
-      <div class="card">
-        <img src="./images/ghot-samurai.png" alt="6" />
-        <img src="./images/back-image.png" alt="0" />
-      </div>
-          <div class="card">
-        <img src="./images/ghot-samurai.png" alt="66" />
-        <img src="./images/back-image.png" alt="0" />
-      </div>
-      <div class="card">
-        <img src="./images/lone-samurai.png" alt="7" />
-        <img src="./images/back-image.png" alt="0" />
-      </div>
+    <main class="app-shell">
+      <section id="startScreen" class="screen start-screen">
+        <div class="intro-copy">
+          <p class="eyebrow">SAMURAI EDITION</p>
+          <h1>Memory Card Game</h1>
+          <p class="subtitle">Match every pair and master the board.</p>
+        </div>
 
-      <div class="card">
-        <img src="./images/lone-samurai.png" alt="77" />
-        <img src="./images/back-image.png" alt="0" />
-      </div>
-      <div class="card">
-        <img src="./images/meditating-samurai.png" alt="8" />
-        <img src="./images/back-image.png" alt="0" />
-      </div>
-      <div class="card">
-        <img src="./images/meditating-samurai.png" alt="88" />
-        <img src="./images/back-image.png" alt="0" />
-      </div>
-      <div class="card">
-        <img src="./images/onna.png" alt="9" />
-        <img src="./images/back-image.png" alt="0" />
-      </div>
-      <div class="card">
-        <img src="./images/onna.png" alt="99" />
-        <img src="./images/back-image.png" alt="0" />
-      </div>
-      <div class="card">
-        <img src="./images/samurai.png" alt="10" />
-        <img src="./images/back-image.png" alt="0" />
-      </div>
-      <div class="card">
-        <img src="./images/samurai.png" alt="1010" />
-        <img src="./images/back-image.png" alt="0" />
-      </div>
+        <div class="start-panel">
+          <label for="playerName">Player name</label>
+          <input
+            id="playerName"
+            type="text"
+            maxlength="24"
+            placeholder="Enter your name"
+            autocomplete="name"
+          />
+          <div class="level-picker" aria-label="Choose a level">
+            <p>Choose level</p>
+            <button
+              class="level-option is-selected"
+              type="button"
+              data-level="1"
+            >
+              Level 1 <span>Numbers</span>
+            </button>
+            <button class="level-option" type="button" data-level="2">
+              Level 2 <span>Images</span>
+            </button>
+          </div>
+          <button id="startButton" class="primary-button" type="button">
+            Start Game
+          </button>
+          <div class="rules">
+            <h2>How to play</h2>
+            <ul>
+              <li>Flip two cards to reveal their symbols.</li>
+              <li>Match all 8 pairs with as few moves as possible.</li>
+              <li>Your best time and moves are saved on this device.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
 
-      <div class="card">
-        <img src="./images/shadow-samurai.png" alt="11" />
-        <img src="./images/back-image.png" alt="0" />
-      </div>
-         <div class="card">
-        <img src="./images/shadow-samurai.png" alt="1111" />
-        <img src="./images/back-image.png" alt="0" />
-      </div>
-      <div class="card">
-        <img src="./images/shogun.png" alt="12" />
-        <img src="./images/back-image.png" alt="0" />
-      </div>
-      <div class="card">
-        <img src="./images/shogun.png" alt="1212" />
-        <img src="./images/back-image.png" alt="0" />
-      </div>
-      <div id="output2" class="output"></div>
-    </section>
-    <script src="./js/script.js"></script>
+      <section id="gameScreen" class="screen game-screen" hidden>
+        <header class="game-header">
+          <div>
+            <p id="levelLabel" class="eyebrow">LEVEL 1 · NUMBERS</p>
+            <h1 id="playerLabel">Player</h1>
+          </div>
+          <div class="game-actions">
+            <button id="restartButton" class="secondary-button" type="button">
+              Restart
+            </button>
+            <button id="menuButton" class="text-button" type="button">
+              Back to Main Menu
+            </button>
+          </div>
+        </header>
+
+        <div class="game-stats" aria-live="polite">
+          <div class="stat">
+            <span>Time</span><strong id="level2Time">00:00</strong>
+          </div>
+          <div class="stat">
+            <span>Moves</span><strong id="level2Attempts">0</strong>
+          </div>
+          <div class="stat">
+            <span>Best time</span><strong id="level2BestTime">--:--</strong>
+          </div>
+          <div class="stat">
+            <span>Best moves</span><strong id="level2BestAttempts">--</strong>
+          </div>
+        </div>
+
+        <div id="cardGrid" class="card-grid" aria-label="Memory cards"></div>
+        <p id="gameMessage" class="game-message" aria-live="polite"></p>
+      </section>
+    </main>
+
     <script src="./js/level2.js"></script>
   </body>
 </html>
