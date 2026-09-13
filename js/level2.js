@@ -169,9 +169,13 @@ function disableCards() {
 
 function unflipCards() {
   lockBoard = true;
+  firstCard.classList.add("mismatch");
+  secondCard.classList.add("mismatch");
 
   setTimeout(() => {
+    firstCard.classList.remove("mismatch");
     firstCard.classList.remove("flipped");
+    secondCard.classList.remove("mismatch");
     secondCard.classList.remove("flipped");
     resetBoard();
   }, 850);
