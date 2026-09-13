@@ -1,0 +1,62 @@
+/* Level 2 image cards */
+.memory-game:has(.card){
+	display: grid;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	gap: 10px;
+}
+
+.card{
+	position: relative;
+	aspect-ratio: 1 / 1;
+	min-width: 0;
+	cursor: pointer;
+	perspective: 1000px;
+	transform-style: preserve-3d;
+	border-radius: 8px;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+	transition: transform 0.2s ease;
+}
+
+.card img{
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	border-radius: 8px;
+	backface-visibility: hidden;
+	transition: transform 0.5s ease;
+}
+
+.card img:first-child{
+	transform: rotateY(180deg);
+}
+
+.card img:last-child{
+	transform: rotateY(0deg);
+}
+
+.card.flipped img:first-child{
+	transform: rotateY(0deg);
+}
+
+.card.flipped img:last-child{
+	transform: rotateY(180deg);
+}
+
+.card:active{
+	transform: scale(0.97);
+}
+
+@media (max-width: 680px){
+	.memory-game:has(.card){
+		gap: 8px;
+	}
+}
+
+@media (max-width: 400px){
+	.memory-game:has(.card){
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 6px;
+	}
+}
